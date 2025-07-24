@@ -1,0 +1,100 @@
+# Semantische Promptnotation – Technische Spezifikation (v0.1)
+
+## Übersicht
+Diese Spezifikation beschreibt das semantische Notationssystem von Joost Schloemer, das mithilfe des Operators `::` Bedeutungsbeziehungen in Prompts formal darstellt und maschinenlesbar macht. Version: **0.1** (Juli 2025).
+
+---
+
+## Operatoren‑Tabelle
+
+| Notation     | Funktion                          | Beschreibung |
+|--------------|-----------------------------------|--------------|
+| `A::B`       | Kontextzuweisung                  | B ist Bedeutungsrahmen von A |
+| `A::!B`      | Kontextverneinung                 | B ist ausgeschlossen |
+| `A::?B`      | Unsicherheit / Hypothese          | B ist möglicher Kontext |
+| `A::~B`      | Semantische Nähe                  | B steht A nahe, ist aber nicht gleich |
+| `A::=B`      | Bedeutungsgleichheit              | A und B sind identisch |
+| `A::>B`      | Spezialisierung                   | A ist spezifisch zu B |
+| `A::<B`      | Generalisierung                   | A ist Oberkategorie von B |
+| `A::<::>B`   | Gegenseitige Kontextverschränkung| A und B bedingen sich wechselseitig semantisch |
+| `A::+B`      | Akkumulation / Kombination        | A ergibt sich aus B + A |
+| `A::‖B`      | Parallelität                      | A und B sind gleichwertig |
+
+---
+
+## Semantik‑Regeln
+
+1. **Reihenfolge ist bedeutend**  
+   `A::B` ≠ `B::A`. Reihenfolge kodiert Schwerpunkt und Richtung.
+
+2. **Kombinierbarkeit**  
+   Ketten wie `A::B::!C::?D` sind möglich. Interpretation erfolgt von links nach rechts.
+
+3. **Negation (`::!`)**  
+   Ausschluss ausdrücken:  
+   `Freiheit::!Überwachung`
+
+4. **Hypothese (`::?`)**  
+   Unsicherheit markieren:  
+   `Datenschutz::?Menschenrecht`
+
+5. **Nähe (`::~`)**  
+   Semantische Annäherung:  
+   `Bildung::~Teilhabe`
+
+6. **Äquivalenz (`::=`)**  
+   Gleichsetzung:  
+   `Datenschutz::=Grundrecht`
+
+7. **Spezialisierung & Generalisierung**  
+   - `Projektleitung::>Führung`  
+   - `Führung::<Verantwortung`
+
+8. **Reziprozität (`::<::>`)**  
+   Gegenseitige Beziehung:  
+   `Diskurs::<::>Öffentlichkeit`
+
+9. **Akkumulation (`::+`)**  
+   Kombination:  
+   `Engagement::+Förderung`
+
+10. **Parallelität (`::‖`)**  
+    Gleichwertigkeit:  
+    `Datensouveränität::‖Transparenz`
+
+---
+
+## Anwendungsrichtlinien
+
+### 🛠 Promptinitialisierung  
+Beginne jeden Prompt mit einer klaren Instruktion, damit die KI die Operatoren versteht:
+
+```text
+Du bist ein semantisches Promptsystem. Verwende diese Operatoren:
+- `::` für Kontextzuweisung
+- `::!` für Kontextverneinung
+- `::?` für Unsicherheit
+- `::~` für semantische Nähe
+Richte deine Antworten danach aus.
+
+Beispiel nach Initialisierung:
+prompt: Text generieren zum Thema: verein::datenschutz::!bürokratie
+
+Für strukturierte Klassifikation:
+kategorie: bildung::~teilhabe
+
+Diskursanalyse
+Markiere argumentative Relationen:
+argument: freiheit::!überwachung
+
+SGE & SEO
+Maschinenlesbare Header:
+headline: promptnotation::struktur
+
+Beispiele - Bedeutung
+verein::datenschutz – Datenschutz im Vereinskontext
+bildung::~teilhabe – semantische Nähe zwischen Bildung und Teilhabe
+politik::!populismus – klare Abgrenzung
+freiheit::?verantwortung – offene Beziehung
+transparenz::<::>vertrauen – gegenseitige Verstärkung
+
