@@ -1,0 +1,25 @@
+name: sa-validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Run validator on examples
+        run: |
+          node tools/sa-validate.js --file examples/anchors.txt
+      - name: Scan repository for data-sa attributes (HTML/MDX)
+        run: |
+          grep -Rho 'data-sa="[^"]\+"' . || true | sed 's/.*data-sa="//;s/".*//' > .anchors || true
+          if [ -s .anchors ]; then
+            node tools/sa-validate.js --file .anchors
+          else
+            echo "No data-sa attributes found. Skipping."
+          fi

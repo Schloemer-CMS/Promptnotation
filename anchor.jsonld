@@ -1,0 +1,14 @@
+{
+  "@context": {
+    "sa": "https://example.org/sa#"
+  },
+  "@type": "sa:Anchor",
+  "sa:chain": [
+    "verein",
+    "datenschutz",
+    "hinweisgebersystem",
+    "vertrauen"
+  ],
+  "sa:lang": "de",
+  "sa:version": "0.9"
+}

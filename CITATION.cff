@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Bitte zitieren Sie dieses Projekt wie unten angegeben."
+title: "Semantik-Anker (sa::) — Norm v0.9 (Draft)"
+version: "0.9"
+date-released: "2025-08-20"
+authors:
+  - family-names: Schloemer
+    given-names: Joost
+license: "CC-BY-4.0"
+type: standard
+repository-code: "https://github.com/Schloemer-CMS/semantik-anker"  # placeholder
+abstract: >
+  Der Semantik-Anker (sa::) ist eine geordnete Bedeutungs-Kette. Diese
+  Veröffentlichung enthält die v0.9-Spezifikation, Beispiele, einen Validator
+  und eine CI-Integration.
